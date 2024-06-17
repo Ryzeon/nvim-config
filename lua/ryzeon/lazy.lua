@@ -1,19 +1,19 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", --lastest sable release
-		lazypath,
-	})
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", --lastest sable release
+    lazypath,
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
---{ import = "ryzeon.plugins" }
-spec = {
+require("lazy").setup {
+  --{ import = "ryzeon.plugins" }
+  spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
@@ -28,12 +28,14 @@ spec = {
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
+        "nvim-tree",
+        "neovim",
         "gzip",
         -- "matchit",
         -- "matchparen",
@@ -45,4 +47,4 @@ spec = {
       },
     },
   },
-})
+}

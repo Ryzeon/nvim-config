@@ -32,6 +32,10 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+-- added tranaparent bg
+vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
+vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
+
 require "nvchad.autocmds"
 
 vim.schedule(function()
